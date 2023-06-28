@@ -14,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+// Localhost:8000/api
+
+// Localhost:8000/api/test
+
+Route::get('/test', function () {
+    return response()->json(
+        [
+            'name' => 'Giovanni',
+            'surname' => 'Lampis'
+        ]
+    );
 });
