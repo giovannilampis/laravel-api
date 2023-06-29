@@ -21,6 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 // Localhost:8000/api
 
-// Localhost:8000/api/test
+// Localhost:8000/api/projects
 
-Route::get('/test', [ProjectController::class, 'index']);
+Route::get('/projects', [ProjectController::class, 'index']);
