@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\Project;
-use App\Http\Controllers\Controller;
 use App\Models\Admin\Category;
 use App\Models\Admin\Technology;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -61,9 +63,13 @@ class ProjectController extends Controller
 
         );
 
-        // dd($request->hasFile('cover_image'));
+        $file = $request->file('cover_image');
+        
+        $fileName = $file->getClientOriginalName();
 
-        $created_project = Project::create($request->all());
+        Storage::disk('public')->put($fileName, File::get($file));
+
+        $created_project = Project::create(array_merge($request->all(),['img_url'=>$fileName]));
 
         // dd($created_project);
         if( $request->has('technologies') ){ 
@@ -121,8 +127,13 @@ class ProjectController extends Controller
             ]
         );
 
-        $project->update($request->all());
+        $file = $request->file('cover_image');
+        
+        $fileName = $file->getClientOriginalName();
 
+        Storage::disk('public')->put($fileName, File::get($file));
+
+        $created_project = $project->update(array_merge($request->all(),['img_url'=>$fileName]));
         
         $project->technologies()->sync($request->technologies);
         

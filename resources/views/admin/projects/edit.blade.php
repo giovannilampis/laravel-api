@@ -14,7 +14,7 @@
 
 <div class="container">
     <p class="text-center fs-2 my-5 text-uppercase">change this project of your collection</p>
-    <form action="{{ route('admin.projects.update', compact('project')) }}" method="POST">
+    <form action="{{ route('admin.projects.update', compact('project')) }}" method="POST" enctype="multipart/form-data">
         @method("PUT")
         @csrf
         

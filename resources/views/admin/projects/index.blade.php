@@ -9,7 +9,7 @@
 
             <div class="col-4 my-3">
                 <div class="card d-flex flex-column h-100" style=>
-                    <img src="{{ $project->img_url }}" class="card-img-top" alt=""{{ $project->title }}"">
+                    <img src="{{ asset('storage/'.$project->img_url) }}" class="card-img-top" alt=""{{ $project->title }}"">
                     <div class="card-body">
                         <h4 class="card-title"><span 
                         class="badge rounded-pill bg-primary">{{$project->category->name?? 'No Category' }}</span>
