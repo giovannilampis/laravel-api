@@ -25,6 +25,7 @@
                       <div class="d-flex justify-content-between">
                           <a href="{{ $project->url }}" class="btn btn-primary">VISIT</a>
                           <a href="{{ route('admin.projects.show', ['project'=>$project]) }}" class="btn btn-info">SHOW</a>
+                          <a href="{{ route('admin.projects.edit', ['project'=>$project]) }}" class="btn btn-warning">EDIT</a>
                           <form action="{{ route('admin.projects.destroy', ['project'=>$project]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf

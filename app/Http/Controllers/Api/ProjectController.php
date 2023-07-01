@@ -13,7 +13,7 @@ class ProjectController extends Controller
 {
     public function index(){
 
-        $projects = Project::all();
+        $projects = Project::with(['category', 'technologies'])->get()->toArray();
 
         return response()->json([
             'success' => true,
