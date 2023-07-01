@@ -2,9 +2,10 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Project extends Model
 {
@@ -26,4 +27,18 @@ class Project extends Model
     public function technologies(){
         return $this->belongsToMany(Technology::class);
     }
+
+    public function generateSlug()
+{
+    $slug = Str::slug($this->title);
+    $count = 2;
+
+    while ($this->slugExists($slug)) {
+        $slug = Str::slug($this->title) . '-' . $count;
+        $count++;
+    }
+
+    $this->slug = $slug;
+}
+
 }
