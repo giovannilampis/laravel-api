@@ -21,6 +21,11 @@ class Project extends Model
         "category_id"
     ];
 
+    public static function generateSlug($title)
+    {
+        return Str::slug($title, '-');
+    }
+
     public function category():BelongsTo{
         return $this->belongsTo(Category::class);
     }
@@ -28,17 +33,5 @@ class Project extends Model
         return $this->belongsToMany(Technology::class);
     }
 
-    public function generateSlug()
-{
-    $slug = Str::slug($this->title);
-    $count = 2;
-
-    while ($this->slugExists($slug)) {
-        $slug = Str::slug($this->title) . '-' . $count;
-        $count++;
-    }
-
-    $this->slug = $slug;
-}
-
+    
 }
