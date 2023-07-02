@@ -28,5 +28,5 @@ use App\Http\Controllers\Api\CategoryController;
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/projects/{slug}', [ProjectController::class, 'show']);
 
-Route::apiResource('/categories', CategoryController::class);
+Route::get('/categories', CategoryController::class. 'index');
 
