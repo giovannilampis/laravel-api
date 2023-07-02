@@ -12,7 +12,7 @@
                 <img src="{{ asset('storage/'.$project->img_url) }}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h4 class="card-title"><span 
-                    class="badge rounded-pill bg-primary">{{$project->category->name?? 'No Category' }}</span>
+                    class="badge rounded-pill bg-secondary">{{$project->category->name?? 'No Category' }}</span>
                   </h4>
                   <h5>Technologies:</h5>
                   @if($project->technologies)
@@ -22,13 +22,15 @@
                   @endif
                   <h5 class="card-title">{{ $project->title }}</h5>
                   <p class="card-text">{{ $project->description }}</p>
-                  <a href="{{ route('admin.projects.index') }}" class="btn btn-info">INDEX</a>
-                  <a href="{{ route('admin.projects.edit', ['project'=>$project]) }}" class="btn btn-primary">EDIT</a>
-                  <form action="{{ route('admin.projects.destroy', ['project'=>$project]) }}" method="POST">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-danger" type="submit">DELETE</button>
-                  </form>
+                  <div class="d-flex justify-content-start">
+                    <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-light">INDEX</a>
+                    <a href="{{ route('admin.projects.edit', ['project'=>$project]) }}" class="btn btn-outline-light mx-3"><i class="fa-solid fa-pencil"></i></a>
+                    <form action="{{ route('admin.projects.destroy', ['project'=>$project]) }}" method="POST">
+                      @method('DELETE')
+                      @csrf
+                      <button class="btn btn-outline-danger" type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                  </div>
                 </div>
               </div>
 

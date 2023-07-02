@@ -12,7 +12,7 @@
                     <img src="{{ asset('storage/'.$project->img_url) }}" class="card-img-top" alt=""{{ $project->title }}"">
                     <div class="card-body">
                         <h4 class="card-title"><span 
-                        class="badge rounded-pill bg-primary">{{$project->category->name?? 'No Category' }}</span>
+                        class="badge rounded-pill bg-secondary">{{$project->category->name?? 'No Category' }}</span>
                         </h4>
                       <h5 class="card-title">"{{ $project->title }}"</h5>
                       <h5 class="card-title">"{{ $project->subtitle }}"</h5>
@@ -22,14 +22,13 @@
                         {{$technology->name}}
                         @endforeach
                       </div>
-                      <div class="d-flex justify-content-between">
-                          <a href="{{ $project->url }}" class="btn btn-primary">VISIT</a>
-                          <a href="{{ route('admin.projects.show', ['project'=>$project]) }}" class="btn btn-info">SHOW</a>
-                          <a href="{{ route('admin.projects.edit', ['project'=>$project]) }}" class="btn btn-warning">EDIT</a>
+                      <div class="d-flex justify-content-start">
+                          <a href="{{ route('admin.projects.show', ['project'=>$project]) }}" class="btn btn-outline-light"><i class="fa-solid fa-eye"></i></a>
+                          <a href="{{ route('admin.projects.edit', ['project'=>$project]) }}" class="btn btn-outline-light mx-3"><i class="fa-solid fa-pencil"></i></a>
                           <form action="{{ route('admin.projects.destroy', ['project'=>$project]) }}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger">DELETE</button>
+                                <button type="submit" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button>
                           </form>
                       </div>
                     </div>  
