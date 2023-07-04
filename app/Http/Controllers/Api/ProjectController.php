@@ -12,14 +12,12 @@ use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
     public function index(Request $request){
-
         if($request->has('category_id')){
             $projects = Project::with(['category', 'technologies'])->where('category_id', $request->category_id)->get()->toArray();
+
         }else{
             $projects = Project::with(['category', 'technologies'])->get()->toArray();
         }
-
-        $projects = Project::with(['category', 'technologies'])->get()->toArray();
 
         return response()->json([
             'success' => true,
